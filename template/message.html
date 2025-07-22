@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-page">
+  <div class="sidebar">
+    <h3>Users</h3>
+    <ul>
+      {% for chat_user in all_users %}
+        <li><a href="{% url 'chat' username=chat_user.username %}">{{ chat_user.username }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      Chat with {{ other_user.username }}
+    </div>
+
+    <div class="message-box">
+      {% for msg in messages %}
+        <div class="message {% if msg.sender == request.user %}sent{% else %}received{% endif %}">
+          {% if msg.content %}
+            <p>{{ msg.content }}</p>
+          {% endif %}
+          {% if msg.image %}
+          <img src="{{ msg.image.url }}" alt="Sent Image" class="message-image">
+          {% endif %}
+          <div class="timestamp">{{ msg.time|date:"H:i" }}</div>
+        </div>
+      {% empty %}
+        <p>No messages yet. Say hello!</p>
+      {% endfor %}
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" class="chat-form">
+  {% csrf_token %}
+  <input type="text" name="content" placeholder="Type a message..." autocomplete="off">
+
+  <!-- Hidden File Input -->
+  <input type="file" name="image" id="imageInput" accept="image/*" style="display: none;">
+
+  <!-- Custom Styled Button -->
+  <label for="imageInput" class="upload-btn">📷</label>
+
+  <button type="submit">Send</button>
+</form>
+  </div>
+</div>
+{% endblock content %}

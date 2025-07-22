@@ -1,0 +1,111 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | SocialConnect</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <span class="logo-icon">🌐</span>
+                <span class="welcome-text">ujjwalxrahul</span>
+            </a>
+        </div>
+
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <a href="{% url 'home' %}" class="nav-link" title="Home">🏠 Home</a>
+                <a href="{% url 'post' %}" class="nav-link" title="Create Post">✏️ Post</a>
+                <a href="{% url 'message' %}" class="nav-link" title="Messages">💬 Message</a>
+                <a href="{% url 'profile' request.user.username %}" class="nav-link" title="Your Profile">👤your profile</a>
+                <a href="{% url 'account_logout' %}" class="nav-link" title="Logout">🚪 Logout</a>
+            {% else %}
+                <a href="{% provider_login_url 'google' %}"  target="blank" class="nav-link" title="Sign Up">🔐 Signup</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% block content %}
+    <main class="main-content">
+        <!-- Left Column (Search) -->
+        <div class="left-column">
+            <!-- Search Form -->
+            <form method="GET" action="{% url 'home' %}" class="user-search-form">
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search users..."
+                  value="{{ request.GET.q }}"
+                  autocomplete="off"
+                />
+                <button type="submit">🔍</button>
+            </form>
+
+            <!-- User Search Results -->
+            <div class="user-search-results">
+                {% if request.GET.q %}
+                    {% if users %}
+                        <ul>
+                            {% for u in users %}
+                                {% if u == request.user %}
+                                <li>
+                                    <a href="{% url 'profile' request.user.username %}">
+                                    👤 {{ u.get_full_name|default:u.username }} (You)
+                                    </a>
+                                </li>
+                                {% else %}
+                            
+                                <li><a href="{% url 'profile' u.username %}">👤 {{ u.get_full_name|default:u.username }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No users found for "{{ request.GET.q }}"</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Right Column (Posts) -->
+        <div class="right-column">
+            {% for post in formshow %}
+            <article class="post-card">
+                <header class="post-header">
+                    <div class="post-author">
+                        <span class="author-icon">👤</span>
+                        <a href="{% url 'profile' post.author.username %}" class="author-name">
+                            {{ post.author.get_full_name|default:post.author.username }}
+                        </a>
+                    </div>
+                    <time class="post-time">{{ post.date|date:"F d, H:i:s" }}</time>
+                </header>
+
+                {% if post.title %}
+                <h2 class="post-title">{{ post.title }}</h2>
+                {% endif %}
+
+                <div class="post-content">{{ post.content }}</div>
+
+                {% if post.image %}
+                <div class="post-media">
+                    <img src="{{ post.image.url }}" alt="Post Image" class="post-image" />
+                </div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+    {% endblock content %}
+</body>
+</html>

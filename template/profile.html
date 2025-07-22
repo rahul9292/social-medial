@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+        
+        
+        <div class="profile-header">
+            <div class="profile-avatar">
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'image/default profile.webp' %}" alt="Default Profile Picture">
+                {% endif %}
+            </div>
+
+            <div class="profile-info">
+                <h2>{{ profile_user.get_full_name|default:profile_user.username }}</h2>
+                <p>@{{ profile_user.username }}</p>
+            </div>
+        </div>
+
+        <div class="upload-section-wrapper">
+    {% if request.user == profile_user %}
+   <div class="upload-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="profile_picture" class="upload-label">📷</label>
+        <input type="file" id="profile_picture" name="profile_picture" class="upload-input" required>
+        <br><br>
+        <button type="submit" class="upload-button">Upload</button>
+    </form>
+</div>
+   {% else %}
+    <div class="message-box">
+            
+            <a href="{% url 'chat' user.username %}" class="chat-link">💬 Message</a>
+        </div>
+    {% endif %}
+</div>
+    </div>
+
+    <h3 class="user-posts-title">Posts by {{ profile_user.username }}</h3>
+
+    {% if user_posts %}
+        {% for post in user_posts %}
+            <div class="post-card">
+                <h4 class="post-title">{{ post.title }}</h4>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
+                {% endif %}
+                <p class="post-content">{{ post.content }}</p>
+                <small class="post-date">{{ post.date|date:"F j, Y, H:i" }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>This user hasn't posted anything yet.</p>
+    {% endif %}
+</div>
+{% endblock content %}
