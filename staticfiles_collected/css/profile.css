@@ -1,0 +1,168 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    margin-right: 380px;  /* Adjusted to push content left */
+}
+
+
+.profile-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+.upload-section-wrapper {
+    margin-top: 20px;
+}
+
+.upload-section {
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.upload-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.upload-section input[type="file"] {
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.upload-section button {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-section button:hover {
+    background: linear-gradient(135deg, #43A047, #1B5E20);
+}
+
+/* Posts Section */
+.user-posts-title {
+    font-size: 22px;
+    color: #444;
+    margin-bottom: 20px;
+    margin-left: 4px;
+}
+
+.post-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.post-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.post-content {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info h2 {
+        font-size: 20px;
+    }
+}
+
+.message-box {
+    text-align: center;
+    background: #fff5f5;
+    border: 1px solid;
+    padding: 15px;
+    border-radius: 10px;
+    
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.chat-link {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #2E7D32;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.chat-link:hover {
+    background-color: #2E7D32;
+}
