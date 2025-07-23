@@ -152,10 +152,13 @@ body {
 }
 
 /* 🔁 RESPONSIVE STYLES */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+    /* Add some top margin/padding to push profile box down */
     .profile-container {
-        margin: 30px 20px;
+        margin-top: 50px; /* increase this value if you want more space */
+        padding-top: 10px;
     }
+}
 
     .profile-header {
         flex-direction: row;
