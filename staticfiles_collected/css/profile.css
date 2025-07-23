@@ -1,15 +1,17 @@
+/* Reset and base styles */
 body {
     background-color: #f4f4f4;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .profile-container {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    margin-right: 380px;  /* Adjusted to push content left */
+    box-sizing: border-box;
 }
-
 
 .profile-card {
     background: #fff;
@@ -45,6 +47,7 @@ body {
     color: #777;
 }
 
+/* Upload Section */
 .upload-section-wrapper {
     margin-top: 20px;
 }
@@ -89,7 +92,6 @@ body {
     font-size: 22px;
     color: #444;
     margin-bottom: 20px;
-    margin-left: 4px;
 }
 
 .post-card {
@@ -123,31 +125,13 @@ body {
     color: #999;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .profile-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .profile-avatar img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .profile-info h2 {
-        font-size: 20px;
-    }
-}
-
+/* Message box and chat link */
 .message-box {
     text-align: center;
     background: #fff5f5;
     border: 1px solid;
     padding: 15px;
     border-radius: 10px;
-    
     margin-top: 20px;
     font-size: 0.95rem;
 }
@@ -164,5 +148,82 @@ body {
 }
 
 .chat-link:hover {
-    background-color: #2E7D32;
+    background-color: #1B5E20;
+}
+
+/* 🔁 RESPONSIVE STYLES */
+@media (max-width: 992px) {
+    .profile-container {
+        margin: 30px 20px;
+    }
+
+    .profile-header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .profile-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info h2 {
+        font-size: 20px;
+    }
+
+    .upload-section {
+        padding: 15px;
+    }
+
+    .upload-section button {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .user-posts-title {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .post-card {
+        padding: 16px;
+    }
+
+    .post-title {
+        font-size: 16px;
+    }
+
+    .post-content {
+        font-size: 14px;
+    }
+
+    .message-box {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .chat-link {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
 }

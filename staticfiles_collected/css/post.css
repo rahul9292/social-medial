@@ -65,3 +65,33 @@
   background: linear-gradient(135deg, #43a047, #388e3c);
   transform: translateY(-2px);
 }
+@media (max-width: 768px) {
+  .post-form-container {
+    margin: 80px 15px 40px 15px; /* Reduce left shift and allow auto spacing */
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .post-form-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .post-form-container textarea {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+
+  .post-form-container input[type="file"] {
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  .post-form-container button {
+    font-size: 15px;
+    padding: 12px 18px;
+    margin-top: 25px;
+    border-radius: 25px;
+  }
+}

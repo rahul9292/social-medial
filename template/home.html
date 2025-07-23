@@ -31,7 +31,7 @@
                 <a href="{% url 'profile' request.user.username %}" class="nav-link" title="Your Profile">👤your profile</a>
                 <a href="{% url 'account_logout' %}" class="nav-link" title="Logout">🚪 Logout</a>
             {% else %}
-                <a href="{% provider_login_url 'google' %}"  target="blank" class="nav-link" title="Sign Up">🔐 Signup</a>
+                <a href="{% provider_login_url 'google' %}" class="nav-link" title="Sign Up">🔐 Signup</a>
             {% endif %}
         </div>
     </nav>
