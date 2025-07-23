@@ -171,17 +171,15 @@
 /* === Responsive Design === */
 /* === Responsive Design Fix === */
 @media (max-width: 600px) {
-  /* Make chat page full viewport size */
   .chat-page {
     flex-direction: column;
-    width: 100vw !important;      /* full viewport width */
-    height: 100vh !important;     /* full viewport height */
+    width: 100vw !important;
+    height: 100vh !important;
     margin: 0 !important;
     border-radius: 0 !important;
     padding: 0;
   }
 
-  /* Sidebar becomes a top horizontal bar */
   .sidebar {
     width: 100% !important;
     height: 50px;
@@ -195,7 +193,7 @@
   }
 
   .sidebar h3 {
-    display: none; /* Hide header to save space */
+    display: none;
   }
 
   .sidebar ul {
@@ -218,12 +216,13 @@
     border-radius: 10px;
   }
 
-  /* Chat container fills remaining space */
   .chat-container {
     flex-grow: 1;
-    height: calc(100vh - 50px); /* full height minus sidebar bar */
-    padding: 12px;
-    overflow-y: auto;
+    height: calc(100vh - 50px); /* 50px for sidebar */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow: hidden;
   }
 
   .chat-header {
@@ -232,13 +231,13 @@
   }
 
   .message-box {
+    flex: 1;
     padding: 12px;
     gap: 10px;
-    max-height: calc(100% - 120px); /* leave space for header + input */
     overflow-y: auto;
+    max-height: none;
   }
 
-  /* Messages adjust */
   .message {
     max-width: 90%;
     font-size: 14px;
@@ -250,15 +249,15 @@
     height: auto;
   }
 
-  /* Chat input form */
   .chat-form {
-    flex-direction: row;
-    gap: 8px;
-    padding: 8px 0;
+    display: flex;
+    gap: 6px;
+    padding: 8px 0 0;
+    margin-top: auto;
   }
 
   .chat-form input[type="text"] {
-    flex-grow: 1;
+    flex: 1;
     font-size: 14px;
     padding: 10px 14px;
     border-radius: 20px;
@@ -268,7 +267,6 @@
     padding: 10px 16px;
     font-size: 14px;
     border-radius: 20px;
+    white-space: nowrap;
   }
 }
-
-

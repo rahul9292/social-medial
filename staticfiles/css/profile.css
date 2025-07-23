@@ -152,26 +152,16 @@ body {
 }
 
 /* 🔁 RESPONSIVE STYLES */
+/* 🔁 Responsive Fixes */
 @media (max-width: 768px) {
-    /* Add some top margin/padding to push profile box down */
-    .profile-container {
-        margin-top: 50px; /* increase this value if you want more space */
-        padding-top: 10px;
-    }
-}
 
-    .profile-header {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+    body {
+        padding-top: 60px; /* To avoid navbar overlap */
     }
-}
 
-@media (max-width: 768px) {
     .profile-container {
         margin: 20px 10px;
-        padding: 15px;
+        padding: 10px;
     }
 
     .profile-card {
@@ -186,16 +176,20 @@ body {
     }
 
     .profile-avatar img {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
     }
 
     .profile-info h2 {
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .profile-info p {
+        font-size: 14px;
     }
 
     .upload-section {
-        padding: 15px;
+        padding: 12px;
     }
 
     .upload-section button {
@@ -204,29 +198,33 @@ body {
     }
 
     .user-posts-title {
-        font-size: 18px;
+        font-size: 17px;
         text-align: center;
     }
 
     .post-card {
-        padding: 16px;
+        padding: 14px;
     }
 
     .post-title {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .post-content {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .post-date {
+        font-size: 12px;
     }
 
     .message-box {
-        font-size: 14px;
-        padding: 12px;
+        font-size: 13px;
+        padding: 10px;
     }
 
     .chat-link {
-        font-size: 14px;
-        padding: 8px 12px;
+        font-size: 13px;
+        padding: 7px 11px;
     }
 }
